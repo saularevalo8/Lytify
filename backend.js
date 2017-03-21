@@ -20,16 +20,34 @@ $("#magicVid").on("click", function(event) {
 
     .done(function(receiving) {
 
-        for (var i = 0; i < 25; i++){
+        for (var i = 0; i < 25; i++) {
 
-        var videoId = receiving.items[i].id.videoId;
-        var fullLink = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>'
-        $("#test2").prepend(fullLink);
+            var videoPhoto = receiving.items[i].snippet.thumbnails.medium.url;
+            var fullLink = $("<img src='" + videoPhoto + "'>");
+            fullLink.attr("data-file", receiving.items[i].id.videoId);
+            var outerDiv = $("<div>");
+            outerDiv.attr("id", receiving.items[i].id.videoId);
+            outerDiv.addClass("video-file");
+            console.log(fullLink);
+            outerDiv.prepend(fullLink);
+            $("#test2").prepend(outerDiv);
+
+
+            // '<iframe width="560" height="315" src="https://www.youtube.com/embed/'+'" frameborder="0" allowfullscreen></iframe>'
+
         };
 
     });
 });
 
+$("#test2").on("click", ".video-file", function(event) {
+
+    var videoID = $(this).attr("data-file");
+    console.log(videoID);
+    $(this).html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoID + 'frameborder="0" allowfullscreen></iframe>');
+
+
+});
 
 
 // Wikipedia Submit on search
