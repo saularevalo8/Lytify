@@ -23,32 +23,35 @@ $("#magicVid").on("click", function(event) {
         for (var i = 0; i < 25; i++) {
 
             var videoPhoto = receiving.items[i].snippet.thumbnails.medium.url;
-            var fullLink = $("<img src='" + videoPhoto + "'>");
-            fullLink.attr("data-file", receiving.items[i].id.videoId);
+            var videoTitle = receiving.items[i].snippet.title;
+            var fullLink = $("<img class='vidPics' src='" + videoPhoto + "'>");
             var outerDiv = $("<div>");
+            var titleDiv = $("<div>");
+            titleDiv.addClass("video-title");
+            titleDiv.append(videoTitle);
+            outerDiv.prepend(titleDiv);
+            outerDiv.attr("data-file", receiving.items[i].id.videoId);
             outerDiv.attr("id", receiving.items[i].id.videoId);
             outerDiv.addClass("video-file");
             console.log(fullLink);
-            outerDiv.prepend(fullLink);
+            outerDiv.append(fullLink);
             $("#test2").prepend(outerDiv);
-
-
-            // '<iframe width="560" height="315" src="https://www.youtube.com/embed/'+'" frameborder="0" allowfullscreen></iframe>'
 
         };
 
     });
+
 });
+
 
 $("#test2").on("click", ".video-file", function(event) {
-
+    event.preventDefault();
     var videoID = $(this).attr("data-file");
     console.log(videoID);
-    $(this).html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoID + 'frameborder="0" allowfullscreen></iframe>');
+    $(this).html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoID + '" frameborder="0" allowfullscreen></iframe>');
 
 
 });
-
 
 // Wikipedia Submit on search
 
@@ -87,6 +90,8 @@ $("#submit-btn").on("click", function(event) {
             break;
 
         }
+        var titleDiv = $("<div class='wiki-title'>");
+        titleDiv.append(inputName);
 
         // Creating and storing an image tag
         var contentDiv = $("<div id='wikiContent'>");
@@ -97,6 +102,7 @@ $("#submit-btn").on("click", function(event) {
         contentDiv.append(content);
         var imgLink = $('<img id="format" src="' + image + '">')
         contentDiv.prepend(imgLink);
+        contentDiv.prepend(titleDiv);
 
     });
 

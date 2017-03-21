@@ -1,5 +1,23 @@
-/*#format {
+.vidPics {
 
-	width: 100px;
-	height: 200px;
-}*/
+	width: 560px;
+	height: 315px;
+}
+
+.videoFile {
+
+	float: left;
+}
+
+.video-title{
+
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.wiki-title{
+	
+	font-size: 30px;
+	font-weight: bold;
+
+}
