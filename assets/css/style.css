@@ -1,0 +1,16 @@
+body {
+	background: url("../images/rocks-1150021_1920.jpg");
+}
+
+.lytify-title {
+	font-size: 100px;
+	font-family: 'Pacifico', cursive;
+}
+
+.loginPanel {
+	margin: 80px;
+}
+
+.sidebar-color {
+	background-color: #afaeac;
+}
