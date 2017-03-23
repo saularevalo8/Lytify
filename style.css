@@ -1,0 +1,23 @@
+.vidPics {
+
+	width: 560px;
+	height: 315px;
+}
+
+.videoFile {
+
+	float: left;
+}
+
+.video-title{
+
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.wiki-title{
+	
+	font-size: 30px;
+	font-weight: bold;
+
+}
