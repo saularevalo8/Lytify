@@ -10,6 +10,7 @@ $(document).ready(function() {
         var username = $(".username-input").val().trim();
         console.log(username);
 
+
         function whichUser() {
             //Determines if the user is returning or new 
             //if returning user: 
@@ -31,6 +32,7 @@ $(document).ready(function() {
 
                 //redirect user to new user page 
                 window.location.href = "newuser.html";
+                
 
             };
 
@@ -49,5 +51,7 @@ $(document).ready(function() {
         //Once the localStorage is cleared, redirect to log in page
         window.location.href = "index.html";
     });
+
+
 
 });
