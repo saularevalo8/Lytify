@@ -35,33 +35,49 @@ $("#submit-btn-firebase").on("click", function(event) {
 
     database.ref().once("value", function(snapshot) {
 
-        snapshot.forEach(function(childSnapshot) {
+        var childData = snapshot.val();
 
-            var childData = childSnapshot.val();
+        var userExsist = checkUser(childData, userName);
+        if(userExsist){
 
-            for (var key in childData) {
-
-                if (childData[key] === userName) {
-
-                    console.log("Username already taken");
+            console.log("Already exists");
 
 
-                }
+        }else{
+            
+            var User = {
 
+                userName: userName
             };
 
-        });
+            database.ref().push(User);
+            console.log("Added to Firebase");
 
-
-        // database.ref().push(newUser);
-
-        $("#firebase-user").val("");
-
-        return false;
+        }
 
     });
-
 });
+
+function checkUser(data, userName) {
+    var checker = false;
+
+    //for (var key in data) {
+
+    for (var key in data) {
+
+        if (data[key].userName === userName) {
+
+            checker = true;
+        }
+
+    }
+
+    return checker;
+
+};
+
+console.log(checkUser({ 1: { userName: "jared" }, 2: { userName: "saul" } }, "jared"));
+
 
 
 // On page load, create an empty video playlist
@@ -98,40 +114,6 @@ $("#magicVid").on("click", function(event) {
         };
 
     });
-
-    // database.ref("-Kfmhi-2S0UeCp_Ai1V_").push(inputName);
-// stateCode = $("#stateCode").val().trim();
-
-var tm = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=WxAxtOVl8IoU8wly3IEFwxIoVRVUWac0&keyword="+ inputName +"&page=1&size=4";
-
-// + "&stateCode="+ stateCode
-
-
-$.ajax({
-        url: tm,
-        method: "GET"
-    })
-
- .done(function(result) {
-
-    for (var i = 0; i < 4; i++) {
-  
-   var tmTest = result._embedded.events[i].name;
-   var date = result._embedded.events[i].dates.start.localDate;
-   var venue = result._embedded.events[i]._embedded.venues[0].name + " in " + result._embedded.events[i]._embedded.venues[0].city.name;
-   var redirect = result._embedded.events[i].url;
-
-    console.log(tmTest);
-    console.log(date);
-    console.log(venue);
-    console.log(redirect);
-
-};
-       
-
-    });
-
-
 
 });
 
