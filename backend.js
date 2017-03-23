@@ -1,16 +1,74 @@
 var inputName;
-
+var stateCode;
+var widgetTemplate = $("#widget").clone();
+$("#widget").hide();
 // Wrap the whole Ticketmaster API in a function
-function ticketMaster() {
-    // This variable will be pre-programmed with our authentication key
-    var authKeyTM = "WxAxtOVl8IoU8wly3IEFwxIoVRVUWac0";
-}
+
+$("#magicVid").on("click", function(event) {
+    var newWidget = widgetTemplate.clone();
+    newWidget.html("");
+    newWidget.attr("w-keyword", $("#wikiInput").val());
+    $("#test5").append(newWidget);
+
+    $.getScript("https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js");
+
+})
+
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCRkSoQczfkOCF7pmk5jftla3A7DEzaZXE",
+    authDomain: "lytify-217d3.firebaseapp.com",
+    databaseURL: "https://lytify-217d3.firebaseio.com",
+    storageBucket: "lytify-217d3.appspot.com",
+    messagingSenderId: "389108121768"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+$("#submit-btn-firebase").on("click", function(event) {
+    event.preventDefault();
+
+    var userName = $("#firebase-user").val().trim();
+
+    database.ref().once("value", function(snapshot) {
+
+        snapshot.forEach(function(childSnapshot) {
+
+            var childData = childSnapshot.val();
+
+            for (var key in childData) {
+
+                if (childData[key] === userName) {
+
+                    console.log("Username already taken");
+
+
+                }
+
+            };
+
+        });
+
+
+        // database.ref().push(newUser);
+
+        $("#firebase-user").val("");
+
+        return false;
+
+    });
+
+});
+
 
 // On page load, create an empty video playlist
 $("#magicVid").on("click", function(event) {
     event.preventDefault();
     var youtubeAPIKey = "AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g";
-    var youtubeLink = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + inputName + "&type=video&key=AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g"
+    var youtubeLink = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + inputName + "&type=video&key=AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g";
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
@@ -40,6 +98,40 @@ $("#magicVid").on("click", function(event) {
         };
 
     });
+
+    // database.ref("-Kfmhi-2S0UeCp_Ai1V_").push(inputName);
+// stateCode = $("#stateCode").val().trim();
+
+var tm = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=WxAxtOVl8IoU8wly3IEFwxIoVRVUWac0&keyword="+ inputName +"&page=1&size=4";
+
+// + "&stateCode="+ stateCode
+
+
+$.ajax({
+        url: tm,
+        method: "GET"
+    })
+
+ .done(function(result) {
+
+    for (var i = 0; i < 4; i++) {
+  
+   var tmTest = result._embedded.events[i].name;
+   var date = result._embedded.events[i].dates.start.localDate;
+   var venue = result._embedded.events[i]._embedded.venues[0].name + " in " + result._embedded.events[i]._embedded.venues[0].city.name;
+   var redirect = result._embedded.events[i].url;
+
+    console.log(tmTest);
+    console.log(date);
+    console.log(venue);
+    console.log(redirect);
+
+};
+       
+
+    });
+
+
 
 });
 
