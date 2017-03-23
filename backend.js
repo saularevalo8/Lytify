@@ -8,7 +8,7 @@ $("#magicVid").on("click", function(event) {
     var newWidget = widgetTemplate.clone();
     newWidget.html("");
     newWidget.attr("w-keyword", $("#wikiInput").val());
-    $("#test5").append(newWidget);
+    $("#ticketContent").prepend(newWidget);
 
     $.getScript("https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js");
 
@@ -109,7 +109,7 @@ $("#magicVid").on("click", function(event) {
             outerDiv.addClass("video-file");
             console.log(fullLink);
             outerDiv.append(fullLink);
-            $("#test2").prepend(outerDiv);
+            $("#youtubeVideos").prepend(outerDiv);
 
         };
 
@@ -118,7 +118,7 @@ $("#magicVid").on("click", function(event) {
 });
 
 
-$("#test2").on("click", ".video-file", function(event) {
+$("#youtubeVideos").on("click", ".video-file", function(event) {
     event.preventDefault();
     var videoID = $(this).attr("data-file");
     console.log(videoID);
@@ -170,7 +170,7 @@ $("#submit-btn").on("click", function(event) {
         // Creating and storing an image tag
         var contentDiv = $("<div id='wikiContent'>");
 
-        $("#test").html(contentDiv);
+        $("#modal").html(contentDiv);
 
         // Setting the catImage src attribute to imageUrl
         contentDiv.append(content);

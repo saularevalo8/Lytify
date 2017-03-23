@@ -21,3 +21,13 @@
 	font-weight: bold;
 
 }
+
+#youtubeVideos, #ticketContent {
+
+	height: 400px;
+	overflow: auto;
+}
+.video-file {
+
+	margin-bottom: 20px;
+}
