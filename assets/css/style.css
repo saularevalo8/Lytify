@@ -1,16 +1,67 @@
 body {
+	/*background-color: #e9e9e9;*/
 	background: url("../images/rocks-1150021_1920.jpg");
+	/*background-size: 100%;
+	background-repeat: no-repeat;*/
 }
 
-.lytify-title {
-	font-size: 100px;
-	font-family: 'Pacifico', cursive;
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
+body {
+    margin-bottom: 60px;
+}
+
+#navbarID {
+	margin-bottom: 30px;
+	padding-left: 30px;
+}
+
+.lytify-title, h1{
+    font-size: 75px;
+    font-family: 'Pacifico', cursive;
+}
+.logo{
+	margin-top: 7px;
+	/*padding-left: 30px;*/
+}
+.navbar-brand{
+	padding-left: 30px;
+}
+
+#navButtonID{
+	margin-top: 15px;
+}
+/*h3{
+	font-size: 20px;
+    font-family: 'Pacifico', cursive;
+
+}*/
 .loginPanel {
-	margin: 80px;
+    margin: 80px;
 }
 
-.sidebar-color {
-	background-color: #afaeac;
+.logout-button {
+    color: black;
 }
+
+.fixed {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #697075;
+    color: white;
+}
+
+.footer-margin{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/*.sidebar-color {
+	background-color: #697075;
+}*/
