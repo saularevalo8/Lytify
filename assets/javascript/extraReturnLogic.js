@@ -1,3 +1,4 @@
+$(".usernameInput").html(localStorage.getItem("name"));
 $(document).ready(function() {
     //Logs what is currently in the localStorage
     console.log("localStorage: " + localStorage.getItem("name"));
@@ -55,3 +56,4 @@ $(document).ready(function() {
 
 
 });
+
