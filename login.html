@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Lytify Login</title>
     <link rel="stylesheet" href="assets/css/reset.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -32,9 +32,9 @@
                     <div class="panel-body">
                         <form>
                             <label for="username text-center">Create a username:</label>
-                            <input type="name" class="form-control username-input">
+                            <input type="name" class="form-control" id="username-input">
                             <br>
-                            <button type="button" class="btn btn-primary login-submit">Submit</button>
+                            <button type="button" class="btn btn-primary" id="login-submit">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -44,15 +44,8 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
-    <script>
-    var username = "";
-
-    if (localStorage.getItem("name") !== null) {
-        // alert("You're already signed in");
-        window.location.href = "returnuser.html"
-    };
-    </script>
+   <!--  <script src="assets/javascript/app.js"></script> -->
+    <script src="extraLoginLogic.js"></script>
 </body>
 
 </html>

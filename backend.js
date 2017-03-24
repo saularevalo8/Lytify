@@ -1,21 +1,27 @@
+var reLoadArr = [];
 var inputName;
 var stateCode;
 var widgetTemplate = $("#widget").clone();
 $("#widget").hide();
-// Wrap the whole Ticketmaster API in a function
+
 
 $("#magicVid").on("click", function(event) {
+
+    ticketMaster();
+});
+
+// Wrap the whole Ticketmaster API in a function
+function ticketMaster() {
     var newWidget = widgetTemplate.clone();
     newWidget.html("");
     newWidget.attr("w-keyword", $("#wikiInput").val());
     $("#ticketContent").prepend(newWidget);
 
     $.getScript("https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js");
+};
 
-})
 
-
-// Initialize Firebase
+//Initialize Firebase
 var config = {
     apiKey: "AIzaSyCRkSoQczfkOCF7pmk5jftla3A7DEzaZXE",
     authDomain: "lytify-217d3.firebaseapp.com",
@@ -38,13 +44,13 @@ $("#submit-btn-firebase").on("click", function(event) {
         var childData = snapshot.val();
 
         var userExsist = checkUser(childData, userName);
-        if(userExsist){
+        if (userExsist) {
 
             console.log("Already exists");
 
 
-        }else{
-            
+        } else {
+
             var User = {
 
                 userName: userName
@@ -78,13 +84,18 @@ function checkUser(data, userName) {
 
 console.log(checkUser({ 1: { userName: "jared" }, 2: { userName: "saul" } }, "jared"));
 
-
-
 // On page load, create an empty video playlist
 $("#magicVid").on("click", function(event) {
+    var vidName = inputName;
+    youtube(vidName);
+    reLoadArr.push(vidName);
+    console.log(reLoadArr);
+});
+
+function youtube(vidName) {
     event.preventDefault();
     var youtubeAPIKey = "AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g";
-    var youtubeLink = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + inputName + "&type=video&key=AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g";
+    var youtubeLink = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + vidName + "&type=video&key=AIzaSyCq3JnzjpVN1WGz09rjvI0tQeKbiaR27-g";
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
@@ -115,7 +126,7 @@ $("#magicVid").on("click", function(event) {
 
     });
 
-});
+};
 
 
 $("#youtubeVideos").on("click", ".video-file", function(event) {
@@ -124,6 +135,22 @@ $("#youtubeVideos").on("click", ".video-file", function(event) {
     console.log(videoID);
     $(this).html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoID + '" frameborder="0" allowfullscreen></iframe>');
 
+
+});
+
+$("#magicVid").on("click", function() {
+
+    $("#test2").html("");
+    var addThis = '<p class="list-group-item favs">' + inputName + '</p>';
+    $("#add").prepend(addThis);
+
+});
+
+$("#submit-btn").on("click", function() {
+    inputName = $("#wikiInput").val().trim();
+    $("#test3").html("");
+    var addThis = '<p class="list-group-item favs">' + inputName + '</p>';
+    $("#recent").prepend(addThis);
 
 });
 
@@ -158,23 +185,30 @@ $("#submit-btn").on("click", function(event) {
             break;
 
         }
+        try {
 
-        for (var key in main) {
-            image = main[key].thumbnail.source;
-            break;
+            for (var key in main) {
+                image = main[key].thumbnail.source;
+                break;
 
+            }
+        } catch (e) {
+            if (e) {
+                image = "http://thetechtemple.com/wp-content/themes/TechNews/images/img_not_available.png";
+            }
         }
         var titleDiv = $("<div class='wiki-title'>");
         titleDiv.append(inputName);
 
         // Creating and storing an image tag
         var contentDiv = $("<div id='wikiContent'>");
+        contentDiv.html("");
 
         $("#modal").html(contentDiv);
 
         // Setting the catImage src attribute to imageUrl
         contentDiv.append(content);
-        var imgLink = $('<img id="format" src="' + image + '">')
+        var imgLink = $('<img id="format" alt"Photo could not load" src="' + image + '">')
         contentDiv.prepend(imgLink);
         contentDiv.prepend(titleDiv);
 
@@ -182,3 +216,5 @@ $("#submit-btn").on("click", function(event) {
 
 
 });
+
+console.log(reLoadArr);

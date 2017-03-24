@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <title>Lytify (new user)</title>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -24,9 +27,9 @@
             </div>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" id="wikiInput">
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchResults">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchResults" id="submit-btn">
                     Search
                 </button>
                 <button type="button" class="btn btn-inverse logout-button">Log Out</button>
@@ -43,15 +46,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="result-image"></div>
+                <div id="modal" class="modal-body">
+                    <!-- <div class="result-image"></div>
                     <div class="result-name"></div>
                     <div class="result-bio"></div>
-                    <p>Test</p>
+                    <p>Test</p> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add to Favorites</button>
+                    <button id="magicVid" type="button" class="btn btn-primary" data-dismiss="modal">Add to Favorites</button>
                 </div>
             </div>
         </div>
@@ -71,9 +74,9 @@
             <!-- </div> -->
             <div class="row">
                 <div class="col-xs-2 col-lg-12" id="giphy"></div>
-                <div class="col-xs-6 col-lg-6" id="youtubeVideos">
+                <div class="col-xs-7 col-lg-7" id="youtubeVideos">
                 </div>
-                <div class="col-xs-6 col-lg-6" id="ticketContent">
+                <div class="col-xs-5 col-lg-5" id="ticketContent">
                 </div>
             </div>
             <!--/row-->
@@ -82,26 +85,19 @@
         <div class="col-xs-6 col-sm-3 col-sm-pull-9 sidebar-offcanvas" id="sidebar">
             <div class="list-group">
                 <a class="list-group-item sidebar-color">Favorites</a>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
+                <p id="add" class="list-group-item"><span id="test2">Add to Favorites!</span></p>
             </div>
         </div>
         <!--/.sidebar-offcanvas-->
         <div class="col-xs-6 col-sm-3 col-sm-pull-9 sidebar-offcanvas" id="sidebar">
             <div class="list-group">
                 <a class="list-group-item sidebar-color">Recent Searches</a>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
-                <p class="list-group-item">#</p>
+                <p id="recent" class="list-group-item"><span id="test3">Search Something!</span></p>
             </div>
         </div>
         <!--/.sidebar-offcanvas-->
     </div>
+    <div id="widget" w-type="event-discovery" w-tmapikey="JJsii1p4jLtakBYE2K6LlfwEXptHtdCj" w-googleapikey="AIzaSyBQrJ5ECXDaXVlICIdUBOe8impKIGHDzdA" w-keyword="" w-theme="simple" w-colorscheme="light" w-width="350" w-height="441" w-size="25" w-border="0" w-borderradius="4" w-postalcode="" w-radius="" w-country="" w-period="week" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-titlelink="off" w-countrycode="US" w-source="" w-latlong=""></div>
     <!--/row-->
     <hr>
     <footer>
@@ -113,18 +109,8 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
     <script src="assets/javascript/app.js"></script>
-    <script>
-    var username = "";
-
-    //Makes sure the user can't go on this page without any input in the log in page 
-    if (localStorage.getItem("name") === null) {
-        window.location.href = "login.html";
-    } else {
-        username = localStorage.getItem("name");
-        $(".usernameInput").html(username);
-
-    }
-    </script>
+    <script src="extraNewUserLogic.js"></script>
+    <script src="backend.js"></script>
 </body>
 
 </html>

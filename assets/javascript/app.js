@@ -3,11 +3,11 @@ $(document).ready(function() {
     console.log("localStorage: " + localStorage.getItem("name"));
     var username = "";
     //On click function for the submit button in the log in page
-    $(".login-submit").on("click", function(event) {
+    $("#login-submit").on("click", function(event) {
         event.preventDefault();
 
         //Stores the user input's value in username
-        var username = $(".username-input").val().trim();
+        var username = $("#username-input").val().trim();
         console.log(username);
 
 
