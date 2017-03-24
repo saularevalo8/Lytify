@@ -1,20 +1,19 @@
-var reLoadArr = [];
+// var reLoadArr = [];
 var inputName;
 var stateCode;
 var widgetTemplate = $("#widget").clone();
 $("#widget").hide();
 
-
 $("#magicVid").on("click", function(event) {
 
-    ticketMaster();
+    ticketMaster(inputName);
 });
 
 // Wrap the whole Ticketmaster API in a function
-function ticketMaster() {
+function ticketMaster(passIn) {
     var newWidget = widgetTemplate.clone();
     newWidget.html("");
-    newWidget.attr("w-keyword", $("#wikiInput").val());
+    newWidget.attr("w-keyword", passIn);
     $("#ticketContent").prepend(newWidget);
 
     $.getScript("https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js");
@@ -25,8 +24,8 @@ function ticketMaster() {
 $("#magicVid").on("click", function(event) {
     var vidName = inputName;
     youtube(vidName);
-    reLoadArr.push(vidName);
-    console.log(reLoadArr);
+    // reLoadArr.push(vidName);
+    // console.log(reLoadArr);
 });
 
 function youtube(vidName) {
@@ -154,4 +153,7 @@ $("#submit-btn").on("click", function(event) {
 
 });
 
-console.log(reLoadArr);
+// ===========================================================================================
+
+
+// console.log(reLoadArr);
