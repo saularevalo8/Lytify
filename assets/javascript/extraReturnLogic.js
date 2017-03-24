@@ -101,12 +101,28 @@ database.ref().on('child_added', function(snapshot) {
 
                         reLoadArr.splice(index, 1);
                     }
+
+
                 });
                 // for (i = 0; i < snapshot.key.length; i++) {
                 //     counts.push(data[key][i]);
                 //     console.log(keys);
                 // }
             });
+
+            for (var j = 0; j < reLoadArr.length; j++) {
+
+            $("#test2").html("");
+            var addThis = '<p class="list-group-item favs">' + reLoadArr[j] + '</p>';
+            $("#add").prepend(addThis);
+
+            ticketMaster(reLoadArr[j]);
+
+            youtube(reLoadArr[j]);
+
+
+
+            }
 
 
             $("#magicVid").on("click", function(event) {
@@ -126,8 +142,6 @@ database.ref().on('child_added', function(snapshot) {
 });
 // });
 console.log(reLoadArr);
-
-
 // ASK OMAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // for (var j = 0; j < reLoadArr.length; j++) {
