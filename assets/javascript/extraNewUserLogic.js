@@ -109,6 +109,20 @@ database.ref().on('child_added', function(snapshot) {
                 // }
             });
 
+            for (var j = 0; j < reLoadArr.length; j++) {
+
+            $("#test2").html("");
+            var addThis = '<p class="list-group-item favs">' + reLoadArr[j] + '</p>';
+            $("#add").prepend(addThis);
+
+            ticketMaster(reLoadArr[j]);
+
+            youtube(reLoadArr[j]);
+
+
+
+            };
+
 
             $("#magicVid").on("click", function(event) {
                 for (var i = tester; i < reLoadArr.length; i++) {

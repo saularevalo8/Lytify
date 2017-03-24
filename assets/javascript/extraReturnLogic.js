@@ -122,7 +122,7 @@ database.ref().on('child_added', function(snapshot) {
 
 
 
-            }
+            };
 
 
             $("#magicVid").on("click", function(event) {
