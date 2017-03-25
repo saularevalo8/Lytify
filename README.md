@@ -18,9 +18,9 @@ Lytify is a dynamic web application which serves as a search engine of entertain
 
 ## APIs(Application Program Interfaces) and Widgets used ##
 
-Wikipedia serves as reference on artist and sports teams.
-Youtube renders associated videos of the artists or sports teams.
-TicketMaster for searching upcoming events of the artists or sports teams.
+* Wikipedia serves as reference on artist and sports teams.
+* Youtube renders associated videos of the artists or sports teams.
+* TicketMaster for searching upcoming events of the artists or sports teams.
 
 ## Design ##
 * Simple user login interface with responsiveness.
