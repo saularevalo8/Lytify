@@ -50,7 +50,7 @@ $(document).ready(function() {
         localStorage.clear();
 
         //Once the localStorage is cleared, redirect to log in page
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     });
 
 
