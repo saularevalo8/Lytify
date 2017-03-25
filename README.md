@@ -29,7 +29,7 @@ Lytify is a dynamic web application which serves as a search engine of entertain
 * User access to be able to retrive favorites.
 * Data storage of usernames and favorites.
 
-## Code Swot Analysist ##
+## Code Swot Analysis ##
 * Strenghts
   - API Integration
   - UI/UX Designing
