@@ -98,14 +98,14 @@ $("#submit-btn").on("click", function(event) {
     inputName = $("#wikiInput").val().trim();
 
 
-    var baseLink = "https://en.wikipedia.org/w/api.php?format=json&action=query&format=json&titles=" + inputName + "&exintro&prop=extracts|pageimages&format=json&pithumbsize=300";
+    var baseLink = "https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&format=json&titles=" + inputName + "&exintro&prop=extracts|pageimages&format=json&pithumbsize=300";
 
     console.log(baseLink);
 
     // Perfoming an AJAX GET request to our queryURL
     $.ajax({
         url: baseLink,
-        method: "GET"
+        method: "GET",
     })
 
     // After the data from the AJAX request comes back
